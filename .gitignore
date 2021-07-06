@@ -1,0 +1,5 @@
+# Dossiers
+mode_modules/
+
+# Lock files
+package-lock.json

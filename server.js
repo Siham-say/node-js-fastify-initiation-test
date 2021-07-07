@@ -186,6 +186,17 @@ fastify.delete('/heroes/:heroesId', async (request, reply)=> {
   return result
 })
 
+fastify.patch('/heroes/:id', async (request, reply) => {
+  const collection = fastify.mongo.db.collection('heroes')
+  const { id } = request.params
+const result = await collection.findOneAndUpdate(
+{ _id: new ObjectId(id) },
+{$set: request.body},
+{ returnDocument: 'after' },
+)
+return result
+})
+
 /***************************************************** */
 // // Require the framework and instantiate it
 // // Require the framework and instantiate it
@@ -363,15 +374,15 @@ fastify.delete('/heroes/:heroesId', async (request, reply)=> {
 // //on déclare une route 
 // // qu'est ce que je souhaite retourner dans cette page
 
-// // Run the server!
-// //try  = tout le bloc doit etre executé 
-// // catch = s'il y a une erreur il arrete le processus
-// const start = async () => {
-//   try {
-//     await fastify.listen(3000) // port 
-//   } catch (err) {
-//     fastify.log.error(err)
-//     process.exit(1)
-//   }
-// }
-// start()
+// Run the server!
+//try  = tout le bloc doit etre executé 
+// catch = s'il y a une erreur il arrete le processus
+const start = async () => {
+  try {
+    await fastify.listen(3000) // port 
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+}
+start()

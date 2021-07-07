@@ -28,3 +28,11 @@ Content-Type: application/json
 		"alignment": "good"
 	}
 }
+###
+GET http://localhost:3000/heroes/60e4582fac4ab14f1c1159bb
+
+###
+GET http://localhost:3000/heroes/bio/60e46dc03b23ed2028bf9a9f
+
+###
+DELETE http://localhost:3000/heroes/60e45aed182efe0698408e19
